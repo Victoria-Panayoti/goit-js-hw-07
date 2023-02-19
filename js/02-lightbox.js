@@ -12,23 +12,12 @@ const imagesElements = galleryItems.map((item) => {
     `
 }).join('');
 
-
 imagesContainer.insertAdjacentHTML('beforeend', imagesElements);
-imagesContainer.addEventListener('click', onImagesElementClick);
-
- function onImagesElementClick(event) {
-    event.preventDefault()
-    
-    const isGalleryImageEl = event.target.nodeName
-    if (isGalleryImageEl !== 'IMG') {
-        return;
-    };
  
-    const lightbox = new SimpleLightbox(`.gallery a`, {
+  const lightbox = new SimpleLightbox(`.gallery a`, {
         loop: true,
         captionsData: `alt`,
         captionPosition: 'bottom',
         captionDelay: 250,
         showCounter: false,
     });
-}

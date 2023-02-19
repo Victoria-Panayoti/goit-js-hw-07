@@ -27,11 +27,16 @@ function onImagesElementClick(event) {
     }
     const lightbox = basicLightbox.create(`
     <img src="${event.target.dataset.source} "width="800" height="600" >
-`);
+`, {
+        onShow: (lightbox) => document.addEventListener('keydown', onEscapeClick),
+    onClose: (lightbox) => document.removeEventListener('keydown', onEscapeClick),
+});
     lightbox.show();
-    imagesContainer.addEventListener('keydown', (evt) => {
-        if (evt.code === 'Escape') {
+   
+    function onEscapeClick(event) {
+        if (event.code === 'Escape') {
             lightbox.close();
         }
-    })
+    }
 }
+
